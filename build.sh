@@ -20,6 +20,7 @@ set -o pipefail
 ASTROROM="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 export ASTROROM
 
+export NODE_OPTIONS="--openssl-legacy-provider"
 ROM_VERSION="2.1.Spring"
 
 BETA_ASSERT=0
