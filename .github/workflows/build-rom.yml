@@ -10,7 +10,7 @@ on:
       upload_cloud:
         description: 'Upload ROM to cloud (PixelDrain)'
         required: false
-        default: false
+        default: true
         type: boolean
 
 jobs:
@@ -55,9 +55,10 @@ jobs:
         run: df -h /
 
       - name: Run AstroROM Build
+        env:
+          NODE_OPTIONS: --openssl-legacy-provider
         run: |
           sudo bash build.sh --build ${{ inputs.device }}
-
 
       - name: Download PixelDrain CLI (pd)
         if: ${{ inputs.upload_cloud }}
